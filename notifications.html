@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Notifications</title>
+  <link rel="stylesheet" href="assets/css/app.css"/>
+</head>
+<body data-page="notifications">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="assets/img/logo.svg" alt="Blockchain Console" style="height:28px"/>
+      </div>
+      <nav class="nav">
+        <a href="index.html" data-page="dashboard"><span class="left">🏛️ <span>Dashboard</span></span></a>
+        <a href="transactions.html" data-page="transactions"><span class="left">🧾 <span>Transactions</span></span></a>
+        <a href="exceptions.html" data-page="exceptions"><span class="left">⚠️ <span>Exceptions</span></span></a>
+        <a href="initiation.html" data-page="initiation"><span class="left">🛠️ <span>Initiation</span></span></a>
+        <a href="qc.html" data-page="qc"><span class="left">✅ <span>QC Queue</span></span></a>
+        <a href="incidents.html" data-page="incidents"><span class="left">🚨 <span>Incidents</span></span></a>
+        <a href="accounts.html" data-page="accounts"><span class="left">🏦 <span>Accounts</span></span></a>
+        <a href="notifications.html" data-page="notifications"><span class="left">🔔 <span>Notifications</span></span></a>
+        <a href="reports.html" data-page="reports"><span class="left">📤 <span>Reports</span></span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="left">
+          <div style="font-weight:900">Notifications</div>
+          <span class="badge kpi">Kinexys • Partior • Deposit Token</span>
+        </div>
+        <div class="right">
+          <div class="pill">
+            <label>Rail</label>
+            <select data-global-product>
+              <option>Combined</option>
+              <option>Kinexys</option>
+              <option>Partior</option>
+              <option>Deposit Token</option>
+            </select>
+          </div>
+          <div class="pill">
+            <label>From</label><input type="date" data-global-from/>
+          </div>
+          <div class="pill">
+            <label>To</label><input type="date" data-global-to/>
+          </div>
+          <div class="pill">
+            <label>Granularity</label>
+            <select data-global-granularity>
+              <option>Monthly</option>
+              <option>Weekly</option>
+              <option>Daily</option>
+              <option>Hourly</option>
+            </select>
+          </div>
+          <input class="search" data-global-search placeholder="Enter to search… (Txn / Client / Msg / Ref)"/>
+          <span class="kbd">Ctrl+K</span>
+          <span class="clock" data-clock></span>
+        </div>
+      </div>
+
+      
+<div class="grid">
+  <div class="card" style="grid-column: span 12">
+    <div class="hd">
+      <div>
+        <h2>Notifications</h2>
+        <div class="sub">Action items: QC, SLA, exceptions, incidents. Filter, search, bulk actions, deep links.</div>
+      </div>
+      <div class="chips">
+        <button class="btn small" id="markRead">Mark read</button>
+        <button class="btn small" id="markUnread">Mark unread</button>
+        <button class="btn small danger" id="deleteNotifs">Delete</button>
+      </div>
+    </div>
+    <div class="bd">
+      <div class="kpis" id="notifKpis" style="grid-template-columns: repeat(12,1fr)"></div>
+      <div style="height:10px"></div>
+      <div class="filters">
+        <div class="f w3"><label>View</label>
+          <select id="nView"><option value="all">All</option><option value="unread">Unread</option><option value="action">Action required</option></select>
+        </div>
+        <div class="f w6"><label>Search</label><input id="nSearch" placeholder="Search by id/title/message"/></div>
+        <div class="f w3" style="display:flex;align-items:flex-end;gap:10px">
+          <button class="btn" id="refreshNotifs">Refresh</button>
+          <button class="btn small primary" id="exportNotifs">Export CSV</button>
+        </div>
+      </div>
+
+      <div style="height:10px"></div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr>
+            <th class="center"><input type="checkbox" id="nAll"/></th>
+            <th>ID</th><th>Kind</th><th>Severity</th><th>Title</th><th>Created</th><th>Status</th><th class="right">Open</th>
+          </tr></thead>
+          <tbody id="notifBody"></tbody>
+        </table>
+      </div>
+      <div class="mini" style="margin-top:8px">Role note: bulk delete is Manager/Admin in real systems. This demo allows it for speed.</div>
+    </div>
+  </div>
+</div>
+
+    </main>
+  </div>
+
+  <script defer src="assets/js/core.js"></script>
+  <script defer src="assets/js/ui.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/pages/notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Accounts</title>
+  <link rel="stylesheet" href="assets/css/app.css"/>
+</head>
+<body data-page="accounts">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="assets/img/logo.svg" alt="Blockchain Console" style="height:28px"/>
+      </div>
+      <nav class="nav">
+        <a href="index.html" data-page="dashboard"><span class="left">🏛️ <span>Dashboard</span></span></a>
+        <a href="transactions.html" data-page="transactions"><span class="left">🧾 <span>Transactions</span></span></a>
+        <a href="exceptions.html" data-page="exceptions"><span class="left">⚠️ <span>Exceptions</span></span></a>
+        <a href="initiation.html" data-page="initiation"><span class="left">🛠️ <span>Initiation</span></span></a>
+        <a href="qc.html" data-page="qc"><span class="left">✅ <span>QC Queue</span></span></a>
+        <a href="incidents.html" data-page="incidents"><span class="left">🚨 <span>Incidents</span></span></a>
+        <a href="accounts.html" data-page="accounts"><span class="left">🏦 <span>Accounts</span></span></a>
+        <a href="notifications.html" data-page="notifications"><span class="left">🔔 <span>Notifications</span></span></a>
+        <a href="reports.html" data-page="reports"><span class="left">📤 <span>Reports</span></span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="left">
+          <div style="font-weight:900">Accounts</div>
+          <span class="badge kpi">Kinexys • Partior • Deposit Token</span>
+        </div>
+        <div class="right">
+          <div class="pill">
+            <label>Rail</label>
+            <select data-global-product>
+              <option>Combined</option>
+              <option>Kinexys</option>
+              <option>Partior</option>
+              <option>Deposit Token</option>
+            </select>
+          </div>
+          <div class="pill">
+            <label>From</label><input type="date" data-global-from/>
+          </div>
+          <div class="pill">
+            <label>To</label><input type="date" data-global-to/>
+          </div>
+          <div class="pill">
+            <label>Granularity</label>
+            <select data-global-granularity>
+              <option>Monthly</option>
+              <option>Weekly</option>
+              <option>Daily</option>
+              <option>Hourly</option>
+            </select>
+          </div>
+          <input class="search" data-global-search placeholder="Enter to search… (Txn / Client / Msg / Ref)"/>
+          <span class="kbd">Ctrl+K</span>
+          <span class="clock" data-clock></span>
+        </div>
+      </div>
+
+      
+<div class="grid">
+  <div class="card" style="grid-column: span 12">
+    <div class="hd">
+      <div>
+        <h2>Accounts</h2>
+        <div class="sub">Client/account lookup, onboarding status, balances, operational metadata. Row drilldown supported.</div>
+      </div>
+      <div class="chips">
+        <button class="btn small" id="resetAcct">Reset</button>
+        <button class="btn small primary" id="exportAcct">Export CSV</button>
+      </div>
+    </div>
+    <div class="bd">
+      <div class="filters">
+        <div class="f w3"><label>Client Name</label><input id="aClientName" placeholder="Client 1"/></div>
+        <div class="f w3"><label>Client ID</label><input id="aClientId" placeholder="ECI-0001"/></div>
+        <div class="f w2"><label>Status</label><select id="aStatus"><option>All</option><option>Active</option><option>Onboarding</option><option>Dormant</option></select></div>
+        <div class="f w2"><label>Currency</label><select id="aCur"><option>All</option></select></div>
+        <div class="f w3"><label>Branch</label><select id="aBranch"><option>All</option></select></div>
+        <div class="f w2"><label>Open Date From</label><input id="aFrom" type="date"/></div>
+        <div class="f w2"><label>Open Date To</label><input id="aTo" type="date"/></div>
+      </div>
+      <div style="height:10px"></div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr>
+            <th>Blockchain Account #</th><th>Account Name</th><th>Branch</th><th>Type</th><th>Currency</th>
+            <th class="right">Current</th><th class="right">Available</th><th>As of</th><th>Client</th><th>Status</th>
+          </tr></thead>
+          <tbody id="acctBody"></tbody>
+        </table>
+      </div>
+      <div class="mini" style="margin-top:8px" id="acctMeta"></div>
+    </div>
+  </div>
+</div>
+
+    </main>
+  </div>
+
+  <script defer src="assets/js/core.js"></script>
+  <script defer src="assets/js/ui.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/pages/accounts.js"></script>
+</body>
+</html>
