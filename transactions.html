@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Transactions</title>
+  <link rel="stylesheet" href="assets/css/app.css"/>
+</head>
+<body data-page="transactions">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="assets/img/logo.svg" alt="Blockchain Console" style="height:28px"/>
+      </div>
+      <nav class="nav">
+        <a href="index.html" data-page="dashboard"><span class="left">🏛️ <span>Dashboard</span></span></a>
+        <a href="transactions.html" data-page="transactions"><span class="left">🧾 <span>Transactions</span></span></a>
+        <a href="exceptions.html" data-page="exceptions"><span class="left">⚠️ <span>Exceptions</span></span></a>
+        <a href="initiation.html" data-page="initiation"><span class="left">🛠️ <span>Initiation</span></span></a>
+        <a href="qc.html" data-page="qc"><span class="left">✅ <span>QC Queue</span></span></a>
+        <a href="incidents.html" data-page="incidents"><span class="left">🚨 <span>Incidents</span></span></a>
+        <a href="accounts.html" data-page="accounts"><span class="left">🏦 <span>Accounts</span></span></a>
+        <a href="notifications.html" data-page="notifications"><span class="left">🔔 <span>Notifications</span></span></a>
+        <a href="reports.html" data-page="reports"><span class="left">📤 <span>Reports</span></span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="left">
+          <div style="font-weight:900">Transactions</div>
+          <span class="badge kpi">Ops explorer • drilldown roadmap • payload</span>
+        </div>
+        <div class="right">
+          <span class="clock" data-clock></span>
+        </div>
+      </div>
+
+      <div class="grid">
+  <div class="card" style="grid-column: span 12; padding:0; border:none; background:transparent; box-shadow:none;">
+    <div class="txn-shell">
+
+      <aside class="txn-filters" id="txnFilterPanel">
+        <div class="panel-hd">
+          <button class="btn small ghost" data-txn-filterpanel-toggle title="Show/Hide filters">☰</button>
+          <div class="panel-title">Filters</div>
+        </div>
+
+        <div class="panel-bd">
+          <div class="filters vstack slim" id="txnFiltersQuick">
+            <div class="f"><label>Product</label>
+              <select data-global-product>
+                <option>Combined</option>
+                <option>Kinexys</option>
+                <option>Partior</option>
+                <option>Deposit Token</option>
+              </select>
+            </div>
+            <div class="f"><label>From</label><input type="date" data-global-from/></div>
+            <div class="f"><label>To</label><input type="date" data-global-to/></div>
+            <div class="f"><label>Search</label><input id="fSearch" data-global-search placeholder="Txn / Client / Msg / Ref"/></div>
+
+            <div class="f"><label>Client</label><input id="fClientName" placeholder="Client1 / Client2"/></div>
+            <div class="f"><label>Client ID</label><input id="fClientId" placeholder="C-001 / C-002"/></div>
+            <div class="f"><label>Status</label><div id="msTxnStatus" data-placeholder="All"></div></div>
+            <div class="f"><label>Type</label><div id="msTxnType" data-placeholder="All"></div></div>
+            <div class="f"><label>Exception</label><div id="msExType" data-placeholder="All"></div></div>
+
+            <div class="f"><label>Currency</label><div id="msCurrency" data-placeholder="All"></div></div>
+            <div class="f"><label>SLA State</label><div id="msSLA" data-placeholder="All"></div></div>
+            <div class="f"><label>Reason Code</label><div id="msReason" data-placeholder="All"></div></div>
+          </div>
+
+          <div class="filters vstack slim adv show" id="txnFiltersAdv">
+            <div class="f"><label>Enquiry Type</label><div id="msEnquiry" data-placeholder="All"></div></div>
+            <div class="f"><label>Product BIC</label><div id="msBic" data-placeholder="All"></div></div>
+            <div class="f"><label>Coin Branch</label><div id="msCoinBranch" data-placeholder="All"></div></div>
+            <div class="f"><label>Account Type</label><div id="msAcctType" data-placeholder="All"></div></div>
+
+            <div class="f"><label>Txn Source</label><div id="msTxnSource" data-placeholder="All"></div></div>
+            <div class="f"><label>Source System</label><div id="msSourceSystem" data-placeholder="All"></div></div>
+            <div class="f"><label>Sub-product</label><div id="msSubProduct" data-placeholder="All"></div></div>
+
+            <div class="f"><label>Account #</label><input id="fAccount" placeholder="XXXX-1234"/></div>
+            <div class="f"><label>Unique Activity ID</label><input id="fUA" placeholder="UA-000000"/></div>
+            <div class="f"><label>Unique Reference #</label><input id="fUR" placeholder="UR-000000000"/></div>
+          </div>
+
+          <div class="panel-hint mini">Tip: collapse filters to maximize the grid.</div>
+        </div>
+
+        <div class="panel-ft">
+          <button class="btn small full" id="resetTxnFilters">Reset filters</button>
+        </div>
+
+        <div class="panel-collapsed" aria-label="Filters rail">
+          <button class="btn small" data-txn-filterpanel-toggle type="button">Filters</button>
+          <button class="btn small ghost" id="resetTxnFiltersRail" type="button">Reset</button>
+          <span class="applied-count" id="txnAppliedCount" title="Applied filters">0</span>
+        </div>
+      </aside>
+
+      <section class="txn-content">
+        <div class="card txn-card">
+          <div class="hd">
+            <div>
+              <h2>Transactions</h2>
+              <div class="sub">Default sort: SLA due → value → age. Click a row for processing roadmap + payment details + legs + payload.</div>
+            </div>
+            <div class="chips">
+              <button class="btn small primary" id="exportTxnCSV">Export CSV</button>
+            </div>
+          </div>
+          <div class="bd txn-bd">
+            <div class="table-wrap fill">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Type</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th class="right">Amount</th>
+                    <th>Date &amp; Time</th>
+                    <th>Status</th>
+                    <th>Reason / Location</th>
+                  </tr>
+                </thead>
+                <tbody id="txnBody"></tbody>
+              </table>
+            </div>
+            <div class="mini" style="margin-top:8px" id="txnMeta"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+  </div>
+
+  <script defer src="assets/js/core.js"></script>
+  <script defer src="assets/js/ui.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/pages/transactions.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Exceptions</title>
+  <link rel="stylesheet" href="assets/css/app.css"/>
+</head>
+<body data-page="exceptions">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="assets/img/logo.svg" alt="Blockchain Console" style="height:28px"/>
+      </div>
+      <nav class="nav">
+        <a href="index.html" data-page="dashboard"><span class="left">🏛️ <span>Dashboard</span></span></a>
+        <a href="transactions.html" data-page="transactions"><span class="left">🧾 <span>Transactions</span></span></a>
+        <a href="exceptions.html" data-page="exceptions"><span class="left">⚠️ <span>Exceptions</span></span></a>
+        <a href="initiation.html" data-page="initiation"><span class="left">🛠️ <span>Initiation</span></span></a>
+        <a href="qc.html" data-page="qc"><span class="left">✅ <span>QC Queue</span></span></a>
+        <a href="incidents.html" data-page="incidents"><span class="left">🚨 <span>Incidents</span></span></a>
+        <a href="accounts.html" data-page="accounts"><span class="left">🏦 <span>Accounts</span></span></a>
+        <a href="notifications.html" data-page="notifications"><span class="left">🔔 <span>Notifications</span></span></a>
+        <a href="reports.html" data-page="reports"><span class="left">📤 <span>Reports</span></span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="left">
+          <div style="font-weight:900">Exceptions</div>
+          <span class="badge kpi">Kinexys • Partior • Deposit Token</span>
+        </div>
+        <div class="right">
+          <div class="pill">
+            <label>Rail</label>
+            <select data-global-product>
+              <option>Combined</option>
+              <option>Kinexys</option>
+              <option>Partior</option>
+              <option>Deposit Token</option>
+            </select>
+          </div>
+          <div class="pill">
+            <label>From</label><input type="date" data-global-from/>
+          </div>
+          <div class="pill">
+            <label>To</label><input type="date" data-global-to/>
+          </div>
+          <div class="pill">
+            <label>Granularity</label>
+            <select data-global-granularity>
+              <option>Monthly</option>
+              <option>Weekly</option>
+              <option>Daily</option>
+              <option>Hourly</option>
+            </select>
+          </div>
+          <input class="search" data-global-search placeholder="Enter to search… (Txn / Client / Msg / Ref)"/>
+          <span class="kbd">Ctrl+K</span>
+          <span class="clock" data-clock></span>
+        </div>
+      </div>
+
+      
+<div class="grid">
+  <div class="card" style="grid-column: span 12">
+    <div class="hd">
+      <div>
+        <h2>Exceptions Center</h2>
+        <div class="sub">Rejects + Returns are your quality engine. Separate lens. Standard taxonomy. Playbooks. Learning loop.</div>
+      </div>
+      <div class="tabs" id="exTabs">
+        <div class="tab active" data-tab="rejects">Rejects</div>
+        <div class="tab" data-tab="returns">Returns</div>
+      </div>
+    </div>
+    <div class="bd">
+      <div class="split">
+        <div>
+          <div class="card" style="box-shadow:none;border:1px solid var(--line)">
+            <div class="hd"><div><h2 id="exTitle">Top Reasons</h2><div class="sub">Click a reason to open playbook.</div></div></div>
+            <div class="bd">
+              <div id="reasonChips" class="chips"></div>
+              <hr/>
+              <div class="mini" style="font-weight:800;color:var(--text);margin-bottom:8px">Heatmap (Client × Currency)</div>
+              <div class="table-wrap slim">
+                <table class="table">
+                  <thead><tr><th>Client</th><th>Currency</th><th class="right">Count</th></tr></thead>
+                  <tbody id="heatBody"></tbody>
+                </table>
+              </div>
+              <div class="mini" style="margin-top:8px">This is product gold: recurring reasons × client pain.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="box-shadow:none;border:1px solid var(--line)">
+            <div class="hd"><div><h2>Playbook</h2><div class="sub">Symptoms → likely root causes → fixes → escalation triggers → required evidence.</div></div></div>
+            <div class="bd" id="playbookPanel">
+              <div class="mini">Select a reason code to view playbook.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </main>
+  </div>
+
+  <script defer src="assets/js/core.js"></script>
+  <script defer src="assets/js/ui.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/pages/exceptions.js"></script>
+</body>
+</html>
